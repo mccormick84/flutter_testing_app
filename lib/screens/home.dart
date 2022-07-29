@@ -7,19 +7,22 @@ import '../models/favorites.dart';
 class HomePage extends StatelessWidget {
   static String routeName = "/";
 
+  HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Testing Sample'),
+        title: const Text('Testing Sample'),
+        centerTitle: false,
         actions: <Widget>[
           TextButton.icon(
               style: TextButton.styleFrom(primary: Colors.white),
               onPressed: () {
                 Navigator.pushNamed(context, FavoritesPage.routeName);
               },
-              icon: Icon(Icons.favorite_border),
-              label: Text('Favorites')),
+              icon: const Icon(Icons.favorite_border),
+              label: const Text('Favorites')),
         ],
       ),
       body: ListView.builder(
@@ -56,8 +59,8 @@ class ItemTile extends StatelessWidget {
         trailing: IconButton(
           key: Key('icon_$itemNo'),
           icon: favoritesList.items.contains(itemNo)
-              ? Icon(Icons.favorite)
-              : Icon(Icons.favorite_border),
+              ? const Icon(Icons.favorite)
+              : const Icon(Icons.favorite_border),
           onPressed: () {
             !favoritesList.items.contains(itemNo)
                 ? favoritesList.add(itemNo)
